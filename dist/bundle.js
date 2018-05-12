@@ -360,6 +360,21 @@ module.exports = emptyFunction;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports = __webpack_require__(13);
+} else {
+  module.exports = __webpack_require__(14);
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /*
 object-assign
 (c) Sindre Sorhus
@@ -453,7 +468,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -474,21 +489,6 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 module.exports = emptyObject;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(13);
-} else {
-  module.exports = __webpack_require__(14);
-}
-
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
@@ -829,7 +829,7 @@ module.exports = containsNode;
 "use strict";
 
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -861,7 +861,7 @@ _reactDom2.default.render(_react2.default.createElement(_App2.default, null), ro
  * LICENSE file in the root directory of this source tree.
  */
 
-var m=__webpack_require__(3),n=__webpack_require__(1),p=__webpack_require__(4),q=__webpack_require__(2),r="function"===typeof Symbol&&Symbol["for"],t=r?Symbol["for"]("react.element"):60103,u=r?Symbol["for"]("react.portal"):60106,v=r?Symbol["for"]("react.fragment"):60107,w=r?Symbol["for"]("react.strict_mode"):60108,x=r?Symbol["for"]("react.provider"):60109,y=r?Symbol["for"]("react.context"):60110,z=r?Symbol["for"]("react.async_mode"):60111,A=r?Symbol["for"]("react.forward_ref"):
+var m=__webpack_require__(4),n=__webpack_require__(1),p=__webpack_require__(5),q=__webpack_require__(2),r="function"===typeof Symbol&&Symbol["for"],t=r?Symbol["for"]("react.element"):60103,u=r?Symbol["for"]("react.portal"):60106,v=r?Symbol["for"]("react.fragment"):60107,w=r?Symbol["for"]("react.strict_mode"):60108,x=r?Symbol["for"]("react.provider"):60109,y=r?Symbol["for"]("react.context"):60110,z=r?Symbol["for"]("react.async_mode"):60111,A=r?Symbol["for"]("react.forward_ref"):
 60112,B="function"===typeof Symbol&&Symbol.iterator;function C(a){for(var b=arguments.length-1,e="http://reactjs.org/docs/error-decoder.html?invariant\x3d"+a,c=0;c<b;c++)e+="\x26args[]\x3d"+encodeURIComponent(arguments[c+1]);n(!1,"Minified React error #"+a+"; visit %s for the full message or use the non-minified dev environment for full errors and additional helpful warnings. ",e)}var D={isMounted:function(){return!1},enqueueForceUpdate:function(){},enqueueReplaceState:function(){},enqueueSetState:function(){}};
 function E(a,b,e){this.props=a;this.context=b;this.refs=p;this.updater=e||D}E.prototype.isReactComponent={};E.prototype.setState=function(a,b){"object"!==typeof a&&"function"!==typeof a&&null!=a?C("85"):void 0;this.updater.enqueueSetState(this,a,b,"setState")};E.prototype.forceUpdate=function(a){this.updater.enqueueForceUpdate(this,a,"forceUpdate")};function F(){}F.prototype=E.prototype;function G(a,b,e){this.props=a;this.context=b;this.refs=p;this.updater=e||D}var H=G.prototype=new F;
 H.constructor=G;m(H,E.prototype);H.isPureReactComponent=!0;var I={current:null},J=Object.prototype.hasOwnProperty,K={key:!0,ref:!0,__self:!0,__source:!0};
@@ -898,9 +898,9 @@ if (process.env.NODE_ENV !== "production") {
   (function() {
 'use strict';
 
-var _assign = __webpack_require__(3);
+var _assign = __webpack_require__(4);
 var invariant = __webpack_require__(1);
-var emptyObject = __webpack_require__(4);
+var emptyObject = __webpack_require__(5);
 var warning = __webpack_require__(6);
 var emptyFunction = __webpack_require__(2);
 var checkPropTypes = __webpack_require__(7);
@@ -2380,7 +2380,7 @@ if (process.env.NODE_ENV === 'production') {
 /*
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var ba=__webpack_require__(1),ea=__webpack_require__(5),m=__webpack_require__(8),A=__webpack_require__(3),C=__webpack_require__(2),fa=__webpack_require__(9),ha=__webpack_require__(10),ja=__webpack_require__(11),ka=__webpack_require__(4);
+var ba=__webpack_require__(1),ea=__webpack_require__(3),m=__webpack_require__(8),A=__webpack_require__(4),C=__webpack_require__(2),fa=__webpack_require__(9),ha=__webpack_require__(10),ja=__webpack_require__(11),ka=__webpack_require__(5);
 function D(a){for(var b=arguments.length-1,c="http://reactjs.org/docs/error-decoder.html?invariant\x3d"+a,d=0;d<b;d++)c+="\x26args[]\x3d"+encodeURIComponent(arguments[d+1]);ba(!1,"Minified React error #"+a+"; visit %s for the full message or use the non-minified dev environment for full errors and additional helpful warnings. ",c)}ea?void 0:D("227");
 function ma(a,b,c,d,e,f,h,g,k){this._hasCaughtError=!1;this._caughtError=null;var v=Array.prototype.slice.call(arguments,3);try{b.apply(c,v)}catch(l){this._caughtError=l,this._hasCaughtError=!0}}
 var E={_caughtError:null,_hasCaughtError:!1,_rethrowError:null,_hasRethrowError:!1,invokeGuardedCallback:function(a,b,c,d,e,f,h,g,k){ma.apply(E,arguments)},invokeGuardedCallbackAndCatchFirstError:function(a,b,c,d,e,f,h,g,k){E.invokeGuardedCallback.apply(this,arguments);if(E.hasCaughtError()){var v=E.clearCaughtError();E._hasRethrowError||(E._hasRethrowError=!0,E._rethrowError=v)}},rethrowCaughtError:function(){return na.apply(E,arguments)},hasCaughtError:function(){return E._hasCaughtError},clearCaughtError:function(){if(E._hasCaughtError){var a=
@@ -2695,16 +2695,16 @@ if (process.env.NODE_ENV !== "production") {
 'use strict';
 
 var invariant = __webpack_require__(1);
-var React = __webpack_require__(5);
+var React = __webpack_require__(3);
 var warning = __webpack_require__(6);
 var ExecutionEnvironment = __webpack_require__(8);
-var _assign = __webpack_require__(3);
+var _assign = __webpack_require__(4);
 var emptyFunction = __webpack_require__(2);
 var checkPropTypes = __webpack_require__(7);
 var getActiveElement = __webpack_require__(9);
 var shallowEqual = __webpack_require__(10);
 var containsNode = __webpack_require__(11);
-var emptyObject = __webpack_require__(4);
+var emptyObject = __webpack_require__(5);
 var hyphenateStyleName = __webpack_require__(21);
 var camelizeStyleName = __webpack_require__(23);
 
@@ -19501,17 +19501,525 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(3);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Nav = __webpack_require__(26);
+
+var _Nav2 = _interopRequireDefault(_Nav);
+
+var _Scoreboard = __webpack_require__(27);
+
+var _Scoreboard2 = _interopRequireDefault(_Scoreboard);
+
+var _PlayByPlay = __webpack_require__(28);
+
+var _PlayByPlay2 = _interopRequireDefault(_PlayByPlay);
+
+var _Stats = __webpack_require__(29);
+
+var _Stats2 = _interopRequireDefault(_Stats);
+
+var _YourScoring = __webpack_require__(30);
+
+var _YourScoring2 = _interopRequireDefault(_YourScoring);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var App = function App() {
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(_Nav2.default, null),
+    _react2.default.createElement(
+      'section',
+      { className: 'app__flex app__wrap' },
+      _react2.default.createElement(
+        'section',
+        { className: 'app__column' },
+        _react2.default.createElement(_Scoreboard2.default, null),
+        _react2.default.createElement(
+          'div',
+          { className: 'app__flex' },
+          _react2.default.createElement(_PlayByPlay2.default, null),
+          _react2.default.createElement(_Stats2.default, null)
+        )
+      ),
+      _react2.default.createElement(_YourScoring2.default, null)
+    )
+  );
+};
+
+exports.default = App;
+
+/***/ }),
+/* 26 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var App = function App() {
-  return _react2.default.createElement('hr', null);
+var Nav = function Nav() {
+  return _react2.default.createElement(
+    "header",
+    { className: "app__header" },
+    _react2.default.createElement(
+      "ul",
+      { className: "app__header__main-nav" },
+      _react2.default.createElement("li", { className: "logo" }),
+      _react2.default.createElement(
+        "li",
+        null,
+        "Lobby"
+      ),
+      _react2.default.createElement(
+        "li",
+        null,
+        "Upcoming"
+      ),
+      _react2.default.createElement(
+        "li",
+        null,
+        "Live"
+      ),
+      _react2.default.createElement(
+        "li",
+        null,
+        "History"
+      ),
+      _react2.default.createElement(
+        "li",
+        null,
+        "Friends"
+      )
+    ),
+    _react2.default.createElement("div", { className: "app__header__account" })
+  );
 };
 
-exports.default = App;
+exports.default = Nav;
+
+/***/ }),
+/* 27 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(3);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Scoreboard = function Scoreboard() {
+  return _react2.default.createElement(
+    "section",
+    { className: "app__game-chart app__section" },
+    _react2.default.createElement(
+      "div",
+      { className: "app__game-chart__score score" },
+      _react2.default.createElement(
+        "div",
+        { className: "score__team away-team" },
+        _react2.default.createElement(
+          "div",
+          { className: "score__team__name" },
+          "Golden State",
+          _react2.default.createElement(
+            "span",
+            { className: "mascot" },
+            "Warriors"
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: "score__team__score" },
+          "87"
+        )
+      ),
+      _react2.default.createElement(
+        "div",
+        { className: "score__game-info" },
+        _react2.default.createElement(
+          "span",
+          { className: "score__game-info__game-time" },
+          "7:34 4th"
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: "score__game-info__venue" },
+          "Oracle Arena",
+          _react2.default.createElement("br", null),
+          "Oakland, CA"
+        )
+      ),
+      _react2.default.createElement(
+        "div",
+        { className: "score__team home-team" },
+        _react2.default.createElement(
+          "div",
+          { className: "score__team__score" },
+          "75"
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: "score__team__name" },
+          "Oklahoma City",
+          _react2.default.createElement(
+            "span",
+            { className: "mascot" },
+            "Thunder"
+          )
+        )
+      )
+    ),
+    _react2.default.createElement(
+      "div",
+      { className: "score__last-play" },
+      "last play: tv timeout. go get a snack."
+    ),
+    _react2.default.createElement(
+      "div",
+      { className: "score__shot-chart" },
+      _react2.default.createElement(
+        "div",
+        { className: "score__shot-chart__team away-team" },
+        _react2.default.createElement(
+          "div",
+          { className: "stat" },
+          _react2.default.createElement(
+            "span",
+            { className: "stat__title" },
+            "FG%"
+          ),
+          _react2.default.createElement(
+            "span",
+            { className: "stat__int" },
+            "46.6%"
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: "stat" },
+          _react2.default.createElement(
+            "span",
+            { className: "stat__title" },
+            "3P%"
+          ),
+          _react2.default.createElement(
+            "span",
+            { className: "stat__int" },
+            "42.1%"
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: "stat" },
+          _react2.default.createElement(
+            "span",
+            { className: "stat__title" },
+            "FT%"
+          ),
+          _react2.default.createElement(
+            "span",
+            { className: "stat__int" },
+            "60.0%"
+          )
+        )
+      ),
+      _react2.default.createElement(
+        "div",
+        { className: "score__shot-chart__image" },
+        _react2.default.createElement("img", { src: "../vendor/assets/shot_chart.png" })
+      ),
+      _react2.default.createElement(
+        "div",
+        { className: "score__shot-chart__team home-team" },
+        _react2.default.createElement(
+          "div",
+          { className: "stat" },
+          _react2.default.createElement(
+            "span",
+            { className: "stat__title" },
+            "FG%"
+          ),
+          _react2.default.createElement(
+            "span",
+            { className: "stat__int" },
+            "46.6%"
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: "stat" },
+          _react2.default.createElement(
+            "span",
+            { className: "stat__title" },
+            "3P%"
+          ),
+          _react2.default.createElement(
+            "span",
+            { className: "stat__int" },
+            "42.1%"
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: "stat" },
+          _react2.default.createElement(
+            "span",
+            { className: "stat__title" },
+            "FT%"
+          ),
+          _react2.default.createElement(
+            "span",
+            { className: "stat__int" },
+            "60.0%"
+          )
+        )
+      )
+    )
+  );
+};
+
+exports.default = Scoreboard;
+
+/***/ }),
+/* 28 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(3);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var PlayByPlay = function PlayByPlay() {
+  return _react2.default.createElement(
+    "section",
+    { className: "app__play-by-play app__section split-flex" },
+    _react2.default.createElement(
+      "div",
+      { className: "app__section__title" },
+      "Play By Play"
+    ),
+    _react2.default.createElement(
+      "div",
+      null,
+      _react2.default.createElement(
+        "div",
+        { className: "app__play-by-play__indiv play" },
+        _react2.default.createElement("img", { src: "../vendor/assets/steph_curry.png", className: "play__headshot" }),
+        _react2.default.createElement(
+          "div",
+          { className: "play__desc" },
+          _react2.default.createElement(
+            "span",
+            null,
+            "8:43 4th"
+          ),
+          _react2.default.createElement(
+            "p",
+            null,
+            "Stephen Curry makes 13-foot jumper. Assisted by Draymond Green."
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: "play__score" },
+          "96-81, GS"
+        )
+      ),
+      _react2.default.createElement(
+        "div",
+        { className: "app__play-by-play__indiv play" },
+        _react2.default.createElement("img", { src: "../vendor/assets/steph_curry.png", className: "play__headshot" }),
+        _react2.default.createElement(
+          "div",
+          { className: "play__desc" },
+          _react2.default.createElement(
+            "span",
+            null,
+            "7:43 4th"
+          ),
+          _react2.default.createElement(
+            "p",
+            null,
+            "Kevin Durant misses 2-foot layup. Rebounded by Andrew Bogut."
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: "play__score" },
+          "98-81, GS"
+        )
+      ),
+      _react2.default.createElement(
+        "div",
+        { className: "app__play-by-play__indiv play" },
+        _react2.default.createElement("img", { src: "../vendor/assets/steph_curry.png", className: "play__headshot" }),
+        _react2.default.createElement(
+          "div",
+          { className: "play__desc" },
+          _react2.default.createElement(
+            "span",
+            null,
+            "5:58 4th"
+          ),
+          _react2.default.createElement(
+            "p",
+            null,
+            "Klay Thompson misses 24-foot jumper. Rebounded by Serge Ibaka."
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: "play__score" },
+          "96-81, GS"
+        )
+      ),
+      _react2.default.createElement(
+        "div",
+        { className: "app__play-by-play__indiv play" },
+        _react2.default.createElement("img", { src: "../vendor/assets/steph_curry.png", className: "play__headshot" }),
+        _react2.default.createElement(
+          "div",
+          { className: "play__desc" },
+          _react2.default.createElement(
+            "span",
+            null,
+            "4:42 4th"
+          ),
+          _react2.default.createElement(
+            "p",
+            null,
+            "Kevin Durant turnover."
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: "play__score" },
+          "96-81, GS"
+        )
+      ),
+      _react2.default.createElement(
+        "div",
+        { className: "app__play-by-play__indiv play" },
+        _react2.default.createElement("img", { src: "../vendor/assets/steph_curry.png", className: "play__headshot" }),
+        _react2.default.createElement(
+          "div",
+          { className: "play__desc" },
+          _react2.default.createElement(
+            "span",
+            null,
+            "4:25 4th"
+          ),
+          _react2.default.createElement(
+            "p",
+            null,
+            "Stephen Curry makes free throw."
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: "play__score" },
+          "96-81, GS"
+        )
+      )
+    )
+  );
+};
+
+exports.default = PlayByPlay;
+
+/***/ }),
+/* 29 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(3);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Stats = function Stats() {
+  return _react2.default.createElement(
+    "section",
+    { className: "app__stats app__section split-flex" },
+    _react2.default.createElement(
+      "div",
+      { className: "app__section__title" },
+      "Stats"
+    )
+  );
+};
+
+exports.default = Stats;
+
+/***/ }),
+/* 30 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(3);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var YourScoring = function YourScoring() {
+  return _react2.default.createElement(
+    "section",
+    { className: "app__sidebar" },
+    _react2.default.createElement(
+      "section",
+      { className: "app__your-scoring app__section" },
+      _react2.default.createElement(
+        "div",
+        { className: "app__section__title" },
+        "Your Scoring"
+      )
+    )
+  );
+};
+
+exports.default = YourScoring;
 
 /***/ })
 /******/ ]);
