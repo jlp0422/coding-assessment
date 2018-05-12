@@ -1,87 +1,57 @@
+/* eslint-disable */
 import React from 'react';
+import axios from 'axios';
 
-const PlayByPlay = () => {
+class PlayByPlay extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      plays: []
+    }
+  }
+
+  componentDidMount() {
+    axios.get('https://my-json-server.typicode.com/fanduel/moneyball-fe-challenge-data/plays')
+      .then( res => res.data)
+      .then( plays => this.setState({ plays }))
+  }
+
+  render() {
+    const { plays } = this.state
+    return (
+      <_PlayByPlay {...this.props} plays={plays} />
+    )
+  }
+}
+
+const _PlayByPlay = ({plays, homeTeam, awayTeam }) => {
+  // console.log(props)
+  // console.log(this)
   return (
     <section className="app__play-by-play app__section split-flex">
       <div className="app__section__title">
         Play By Play
-							</div>
+			</div>
       <div>
-        <div className="app__play-by-play__indiv play">
-          <img src="../vendor/assets/steph_curry.png" className="play__headshot" />
-          <div className="play__desc">
-            <span>
-              8:43 4th
-										</span>
-            <p>
-              Stephen Curry makes 13-foot jumper. Assisted by Draymond Green.
-										</p>
-          </div>
-
-          <div className="play__score">
-            96-81, GS
-									</div>
-        </div>
-        <div className="app__play-by-play__indiv play">
-          <img src="../vendor/assets/steph_curry.png" className="play__headshot" />
-          <div className="play__desc">
-            <span>
-              7:43 4th
-										</span>
-            <p>
-              Kevin Durant misses 2-foot layup. Rebounded by Andrew Bogut.
-										</p>
-          </div>
-
-          <div className="play__score">
-            98-81, GS
-									</div>
-        </div>
-        <div className="app__play-by-play__indiv play">
-          <img src="../vendor/assets/steph_curry.png" className="play__headshot" />
-          <div className="play__desc">
-            <span>
-              5:58 4th
-										</span>
-            <p>
-              Klay Thompson misses 24-foot jumper. Rebounded by Serge Ibaka.
-										</p>
-          </div>
-
-          <div className="play__score">
-            96-81, GS
-									</div>
-        </div>
-        <div className="app__play-by-play__indiv play">
-          <img src="../vendor/assets/steph_curry.png" className="play__headshot" />
-          <div className="play__desc">
-            <span>
-              4:42 4th
-										</span>
-            <p>
-              Kevin Durant turnover.
-										</p>
-          </div>
-
-          <div className="play__score">
-            96-81, GS
-									</div>
-        </div>
-        <div className="app__play-by-play__indiv play">
-          <img src="../vendor/assets/steph_curry.png" className="play__headshot" />
-          <div className="play__desc">
-            <span>
-              4:25 4th
-										</span>
-            <p>
-              Stephen Curry makes free throw.
-										</p>
-          </div>
-
-          <div className="play__score">
-            96-81, GS
-									</div>
-        </div>
+      {
+        plays.map(play => (
+            <div key={play.id} className="app__play-by-play__indiv play">
+              <img src={`../vendor/assets/${play.scoring_player}.png`} className="play__headshot" />
+              <div className="play__desc">
+                <span>{play.time_left} {play.quarter}th</span>
+                <p>{play.description}</p>
+              </div>
+              <div className="play__score">
+                { play.home_score > play.away_score ? (
+                  `${play.home_score}-${play.away_score}, ${homeTeam}`
+                ) : (
+                  `${play.away_score}-${play.home_score}, ${awayTeam}`
+                )
+              }
+              </div>
+            </div>
+        ))
+      }
       </div>
     </section>
   )

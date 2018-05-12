@@ -210,4 +210,96 @@
     color: #aaa;
 }
 
+.footer {
+	display: flex;
+	align-items: center;
+	background-color: #627178;
+}
+
+.big-game-box {
+	display: flex;
+}
+
+.arrow {
+	color: #ffffff;
+	font-size: 20px;
+	font-family: "Proxima-Regular", sans-serif;
+	background-color: #475459;
+	height: 70px;
+	width: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.footer-box {
+	background-color: #627178;
+	height: 70px;
+	width: 110px;
+	border-left: 1px solid #f0f3f8;
+	border-right: 1px solid #f0f3f8;
+	display: flex;
+	flex-direction: column;
+	justify-content: center
+}
+
+.footer-box-select {
+	background-color: #778693;
+	height: 70px;
+	width: 110px;
+	border-left: 1px solid #f0f3f8;
+	display: flex;
+	flex-direction: column;
+	justify-content: center
+}
+
+.footer-player {
+	background-color: #778693;
+	display: flex;
+	height: 70px;
+	width: 170px;
+}
+
+.footer-player > .team, .player-stat {
+	color: #ffffff;
+	font-family: "Proxima-Regular", sans-serif;
+	font-size: 14px;
+	padding-top: 15px;
+}
+
+.footer-player > .player-stat {
+	color: #ffffff;
+	font-family: "Proxima-Regular", sans-serif;
+	font-size: 14px;
+	padding-top: 15px;
+	padding-left: 10px;
+}
+
+.player-stat > .stat {
+	font-size: 12px;
+}
+
+.footer-box-team-score {
+	display: flex;
+	justify-content: space-between;
+	color: #ffffff;
+	font-family: "Proxima-Regular", sans-serif;
+	font-size: 14px;
+}
+
+.footer-box-team {
+	padding-left: 15px;
+}
+
+.footer-box-score {
+	padding-right: 15px;
+}
+
+.footer-box-time {
+	color: #ffffff;
+	font-family: "Proxima-Regular", sans-serif;
+	font-size: 12px;
+	padding: 0px 0px 0px 15px;
+}
+
 /*# sourceMappingURL=main.css.map */
