@@ -14,7 +14,7 @@ const App = () => {
         <section className="app__column">
           <Scoreboard />
           <div className="app__flex">
-            <PlayByPlay awayTeam={ 'GSW' } homeTeam={ 'OKC' } />
+            <PlayByPlay />
             <Stats />
           </div>
         </section>

@@ -6,27 +6,30 @@ class PlayByPlay extends React.Component {
   constructor() {
     super()
     this.state = {
-      plays: []
+      plays: [],
+      homeTeam: {},
+      awayTeam: {}
     }
   }
 
   componentDidMount() {
-    axios.get('https://my-json-server.typicode.com/fanduel/moneyball-fe-challenge-data/plays')
+    axios.get('https://my-json-server.typicode.com/fanduel/moneyball-fe-challenge-data/db')
       .then( res => res.data)
-      .then( plays => this.setState({ plays }))
+      .then( info => {
+        this.setState({ plays: info.plays, homeTeam: info.game_stats.home_team, awayTeam: info.game_stats.away_team })
+      })
   }
 
   render() {
-    const { plays } = this.state
+    // console.log(this.state)
+    const { plays, homeTeam, awayTeam } = this.state
     return (
-      <_PlayByPlay {...this.props} plays={plays} />
+      <_PlayByPlay {...this.props} plays={plays} homeTeam={ homeTeam } awayTeam={ awayTeam } />
     )
   }
 }
 
 const _PlayByPlay = ({plays, homeTeam, awayTeam }) => {
-  // console.log(props)
-  // console.log(this)
   return (
     <section className="app__play-by-play app__section split-flex">
       <div className="app__section__title">
@@ -43,9 +46,9 @@ const _PlayByPlay = ({plays, homeTeam, awayTeam }) => {
               </div>
               <div className="play__score">
                 { play.home_score > play.away_score ? (
-                  `${play.home_score}-${play.away_score}, ${homeTeam}`
+                  `${play.home_score}-${play.away_score}, ${homeTeam.abbrev}`
                 ) : (
-                  `${play.away_score}-${play.home_score}, ${awayTeam}`
+                  `${play.away_score}-${play.home_score}, ${awayTeam.abbrev}`
                 )
               }
               </div>

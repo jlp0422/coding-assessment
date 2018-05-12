@@ -1,40 +1,67 @@
+/* eslint-disable */
 import React from 'react'
+import axios from 'axios';
 
-const Scoreboard = () => {
+class Scoreboard extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      game_stats: {}
+    }
+  }
+
+  componentDidMount() {
+    axios.get('https://my-json-server.typicode.com/fanduel/moneyball-fe-challenge-data/game_stats')
+      .then( res => res.data)
+      .then( game_stats => this.setState({ game_stats }))
+  }
+
+  render() {
+    const { game_stats } = this.state
+    return (
+      <_Scoreboard {...this.props} stats={ game_stats }/>
+    )
+  }
+}
+
+const _Scoreboard = ({ stats }) => {
+  console.log(stats)
+  const { away_team, home_team, arena, location, quarter, time_left } = stats
+  if (!stats.arena) return null;
   return (
     <section className="app__game-chart app__section">
       <div className="app__game-chart__score score">
         <div className="score__team away-team">
           <div className="score__team__name">
-            Golden State
-									<span className="mascot">
-              Warriors
-									</span>
+            {away_team.location}
+            <span className="mascot">
+              {away_team.name}
+            </span>
           </div>
           <div className="score__team__score">
-            87
-								</div>
+            {away_team.score}
+          </div>
         </div>
 
         <div className="score__game-info">
           <span className="score__game-info__game-time">
-            7:34 4th
-								</span>
+            {time_left} {quarter}th
+					</span>
           <div className="score__game-info__venue">
-            Oracle Arena<br />
-            Oakland, CA
-								</div>
+            {arena}<br />
+            {location}
+					</div>
         </div>
 
         <div className="score__team home-team">
           <div className="score__team__score">
-            75
-								</div>
+            {home_team.score}
+					</div>
           <div className="score__team__name">
-            Oklahoma City
-									<span className="mascot">
-              Thunder
-									</span>
+            {home_team.location}
+            <span className="mascot">
+              {home_team.name}
+            </span>
           </div>
         </div>
       </div>
@@ -45,30 +72,18 @@ const Scoreboard = () => {
 
       <div className="score__shot-chart">
         <div className="score__shot-chart__team away-team">
-          <div className="stat">
-            <span className="stat__title">
-              FG%
-									</span>
-            <span className="stat__int">
-              46.6%
-									</span>
-          </div>
-          <div className="stat">
-            <span className="stat__title">
-              3P%
-									</span>
-            <span className="stat__int">
-              42.1%
-									</span>
-          </div>
-          <div className="stat">
-            <span className="stat__title">
-              FT%
-									</span>
-            <span className="stat__int">
-              60.0%
-									</span>
-          </div>
+        {
+          away_team.shooting_stats.map(stat => (
+            <div key={stat.title} className="stat">
+              <span className="stat__title">
+                {stat.title}
+                </span>
+              <span className="stat__int">
+                {stat.perc}
+                </span>
+            </div>
+          ))
+        }
         </div>
 
         <div className="score__shot-chart__image">
@@ -76,30 +91,18 @@ const Scoreboard = () => {
         </div>
 
         <div className="score__shot-chart__team home-team">
-          <div className="stat">
-            <span className="stat__title">
-              FG%
-									</span>
-            <span className="stat__int">
-              46.6%
-									</span>
-          </div>
-          <div className="stat">
-            <span className="stat__title">
-              3P%
-									</span>
-            <span className="stat__int">
-              42.1%
-									</span>
-          </div>
-          <div className="stat">
-            <span className="stat__title">
-              FT%
-									</span>
-            <span className="stat__int">
-              60.0%
-									</span>
-          </div>
+          {
+            home_team.shooting_stats.map(stat => (
+              <div key={stat.title} className="stat">
+                <span className="stat__title">
+                  {stat.title}
+                </span>
+                <span className="stat__int">
+                  {stat.perc}
+                </span>
+              </div>
+            ))
+          }
         </div>
       </div>
 
