@@ -217,7 +217,8 @@
 }
 
 .big-game-box {
-	display: flex;
+    display: flex;
+    border-right: 1px solid #f0f3f8;
 }
 
 .arrow, .arrow {
@@ -233,14 +234,14 @@
 }
 
 .arrow-divider {
-    flex-grow: 1
+    flex-grow: 1;
 }
 
 .footer-box {
 	background-color: #627178;
 	height: 70px;
 	width: 110px;
-	border-left: 1px solid #f0f3f8;
+	/* border-left: 1px solid #f0f3f8; */
 	border-right: 1px solid #f0f3f8;
 	display: flex;
 	flex-direction: column;
@@ -253,7 +254,7 @@
 	width: 110px;
 	display: flex;
 	flex-direction: column;
-	justify-content: center
+    justify-content: center;
 }
 
 .footer-player {

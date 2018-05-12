@@ -1619,9 +1619,8 @@ var _Footer = function _Footer(_ref) {
       { className: 'arrow' },
       '<'
     ),
-    _react2.default.createElement(_GameBoxSelected2.default, { selectedGame: selectedGame }),
-    otherGames.length && otherGames.map(function (game) {
-      return _react2.default.createElement(
+    scores.map(function (game) {
+      return game.game_id === selectedGame.game_id ? _react2.default.createElement(_GameBoxSelected2.default, { key: game.game_id, selectedGame: selectedGame }) : _react2.default.createElement(
         'div',
         { onClick: function onClick() {
             return onChangeGame(game.game_id);

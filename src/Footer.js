@@ -40,12 +40,15 @@ const _Footer = ({ scores, selectedGame, onChangeGame }) => {
   return (
     <div className="footer">
       <div className="arrow">&lt;</div>
-      <GameBoxSelected selectedGame={selectedGame} />
       {
-        otherGames.length && otherGames.map(game => (
-          <div onClick={() => onChangeGame(game.game_id) } key={game.game_id} >
-            <GameBox game={ game } />
+        scores.map(game => (
+          game.game_id === selectedGame.game_id ? (
+            <GameBoxSelected key={game.game_id} selectedGame={selectedGame} />
+          ) : (
+          <div onClick={() => onChangeGame(game.game_id)} key={game.game_id} >
+            <GameBox game={game} />
           </div>
+          )
         ))
       }
       <div className="arrow-divider" />
