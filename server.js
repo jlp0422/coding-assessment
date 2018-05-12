@@ -5,6 +5,7 @@ const path = require('path');
 
 app.use('/dist', express.static(path.join(__dirname, 'dist')))
 app.use('/vendor', express.static(path.join(__dirname, 'public')))
+app.use('/nba', require('./routes'))
 
 app.get('/', (req, res, next) => {
   res.sendFile(path.join(__dirname, 'index.html'))
