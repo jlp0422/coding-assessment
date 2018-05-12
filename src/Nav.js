@@ -1,6 +1,30 @@
+/* eslint-disable */
 import React from 'react';
+import axios from 'axios';
 
-const Nav = () => {
+class Nav extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      nav: []
+    }
+  }
+
+  componentDidMount() {
+    axios.get('https://my-json-server.typicode.com/fanduel/moneyball-fe-challenge-data/nav_elements')
+      .then( res => res.data)
+      .then( nav => this.setState({ nav }))
+  }
+
+  render() {
+    const { nav } = this.state
+    return (
+      <_Nav {...this.props} nav={ nav } />
+    )
+  }
+}
+
+const _Nav = ({ nav }) => {
   return (
   <header className="app__header">
 
@@ -8,21 +32,16 @@ const Nav = () => {
       <li className="logo">
 
       </li>
-      <li>
-        Lobby
-					</li>
-      <li>
-        Upcoming
-					</li>
-      <li>
-        Live
-					</li>
-      <li>
-        History
-					</li>
+      {
+        nav.map(link => (
+          <a style={{ textDecoration: 'none', color: '#ffffff'}} key={link.title} href={`${link.href}`}>
+            <li>{link.title}</li>
+          </a>
+        ))
+      }
       <li>
         Friends
-					</li>
+			</li>
     </ul>
 
     <div className="app__header__account">

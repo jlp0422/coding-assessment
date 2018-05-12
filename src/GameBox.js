@@ -1,27 +1,29 @@
+/* eslint-disable */
 import React from 'react';
 import FooterPlayerStats from './FooterPlayerStats';
 
-const GameBox = ({awayTeam, awayScore, homeTeam, homeScore, time }) => {
+const GameBox = ({ game }) => {
+  const { away_team, home_team, time_left, quarter } = game
   return (
     <div className="footer-box">
       <div className="footer-box-team-score">
         <div className="footer-box-team">
-          {awayTeam}
+          {away_team.abbrev}
         </div>
         <div className="footer-box-score">
-          {awayScore}
+          {away_team.score}
         </div>
       </div>
       <div className="footer-box-team-score">
         <div className="footer-box-team">
-          { homeTeam }
+          { home_team.abbrev }
         </div>
         <div className="footer-box-score">
-          {homeScore}
+          {home_team.score}
         </div>
       </div>
       <div className="footer-box-time">
-        <span>{time}</span>
+        <span>{time_left} {quarter}{quarter === 1 ? 'st' : quarter === 2 ? 'nd' : quarter === '3' ? 'rd' : 'th'}</span>
       </div>
     </div>
   )

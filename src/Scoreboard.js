@@ -25,7 +25,6 @@ class Scoreboard extends React.Component {
 }
 
 const _Scoreboard = ({ stats }) => {
-  console.log(stats)
   const { away_team, home_team, arena, location, quarter, time_left } = stats
   if (!stats.arena) return null;
   return (
@@ -45,7 +44,7 @@ const _Scoreboard = ({ stats }) => {
 
         <div className="score__game-info">
           <span className="score__game-info__game-time">
-            {time_left} {quarter}th
+            {time_left} {quarter}{ quarter === 1 ? 'st' : quarter === 2 ? 'nd' : quarter === '3' ? 'rd' : 'th'}
 					</span>
           <div className="score__game-info__venue">
             {arena}<br />

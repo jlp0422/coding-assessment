@@ -1,33 +1,36 @@
+/* eslint-disable */
 import React from 'react';
 import FooterPlayerStats from './FooterPlayerStats';
 import Footer from './Footer';
 
-const GameBoxSelected = ({awayTeam, awayScore, homeTeam, homeScore, time }) => {
+const GameBoxSelected = ({selectedGame}) => {
+  if (!selectedGame.quarter) return null
+  const { away_team, home_team, time_left, quarter, top_performers } = selectedGame
   return (
     <div className="big-game-box">
       <div className="footer-box-select">
         <div className="footer-box-team-score">
           <div className="footer-box-team">
-            {awayTeam}
+            {away_team.name}
           </div>
           <div className="footer-box-score">
-            {awayScore}
+            {away_team.score}
           </div>
         </div>
         <div className="footer-box-team-score">
           <div className="footer-box-team">
-            {homeTeam}
+            {home_team.name}
           </div>
           <div className="footer-box-score">
-            { homeScore }
+            {home_team.score}
           </div>
         </div>
         <div className="footer-box-time">
-          <span>{ time }</span>
+          <span>{time_left} {quarter}{quarter === 1 ? 'st' : quarter === 2 ? 'nd' : quarter === '3' ? 'rd' : 'th'}</span>
         </div>
       </div>
-      <FooterPlayerStats team="GSW" player="S. Curry" position="PG" stats="26 points, 5 rebounds" />
-      <FooterPlayerStats team="OKC" player="K. Durant" position="SF" stats="26 points, 5 rebounds" />
+      <FooterPlayerStats topPerformer={ top_performers[1]} />
+      <FooterPlayerStats topPerformer={ top_performers[0]}/>
     </div>
   )
 }

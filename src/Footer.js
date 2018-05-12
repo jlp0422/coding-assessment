@@ -1,14 +1,53 @@
+/* eslint-disable */
 import React from 'react';
 import GameBox from './GameBox';
 import GameBoxSelected from './GameBoxSelected';
+import axios from 'axios'
 
-const Footer = () => {
+class Footer extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      scores: [],
+      selectedGame: {}
+    }
+    this.onChangeGame = this.onChangeGame.bind(this)
+  }
+
+  componentDidMount() {
+    axios.get('https://my-json-server.typicode.com/fanduel/moneyball-fe-challenge-data/footer_scoreboard')
+      .then( res => res.data)
+      .then( scores => this.setState({ scores, selectedGame: scores[0] }))
+  }
+
+  onChangeGame(id) {
+    const { scores } = this.state
+    const selectedGame = scores.find(game => game.game_id === id)
+    this.setState({ selectedGame })
+  }
+
+  render() {
+    const { scores, selectedGame } = this.state
+    const {onChangeGame} = this
+    return (
+      <_Footer {...this.props} scores={ scores } onChangeGame={ onChangeGame } selectedGame={ selectedGame } />
+    )
+  }
+}
+
+const _Footer = ({ scores, selectedGame, onChangeGame }) => {
+  const otherGames = scores.filter(score => score.game_id !== selectedGame.game_id)
   return (
     <div className="footer">
       <div className="arrow">&lt;</div>
-      <GameBoxSelected awayTeam="Warriors" homeTeam="Thunder" awayScore="87" homeScore="56" time="7:34 4th" />
-      <GameBox awayTeam="CHI" awayScore="45" homeTeam="BOS" homeScore="34" time="3:26 2nd" />
-      <GameBox awayTeam="ATL" awayScore="43" homeTeam="MEM" homeScore="39" time="6:15 3rd"  />
+      <GameBoxSelected selectedGame={selectedGame} />
+      {
+        otherGames.length && otherGames.map(game => (
+          <div onClick={() => onChangeGame(game.game_id) } key={game.game_id} >
+            <GameBox game={ game } />
+          </div>
+        ))
+      }
 
       <div className="arrow">&gt;</div>
     </div>
