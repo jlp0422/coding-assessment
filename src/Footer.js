@@ -48,7 +48,7 @@ const _Footer = ({ scores, selectedGame, onChangeGame }) => {
           </div>
         ))
       }
-
+      <div className="arrow-divider" />
       <div className="arrow">&gt;</div>
     </div>
   )

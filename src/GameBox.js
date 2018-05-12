@@ -23,7 +23,7 @@ const GameBox = ({ game }) => {
         </div>
       </div>
       <div className="footer-box-time">
-        <span>{time_left} {quarter}{quarter === 1 ? 'st' : quarter === 2 ? 'nd' : quarter === '3' ? 'rd' : 'th'}</span>
+        <span>{time_left} {quarter}{quarter === 1 ? 'st' : quarter === 2 ? 'nd' : quarter === 3 ? 'rd' : 'th'}</span>
       </div>
     </div>
   )

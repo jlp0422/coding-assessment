@@ -44,7 +44,7 @@ const _Scoreboard = ({ stats }) => {
 
         <div className="score__game-info">
           <span className="score__game-info__game-time">
-            {time_left} {quarter}{ quarter === 1 ? 'st' : quarter === 2 ? 'nd' : quarter === '3' ? 'rd' : 'th'}
+            {time_left} {quarter}{ quarter === 1 ? 'st' : quarter === 2 ? 'nd' : quarter === 3 ? 'rd' : 'th'}
 					</span>
           <div className="score__game-info__venue">
             {arena}<br />

@@ -9,7 +9,7 @@ const FooterPlayerStats = ({ topPerformer }) => {
       </div>
       <div className="player-stat">
         <span className="player">{name}, {position}</span><br />
-        <span className="stat">Points: {points}, Rebounds: {rebounds }</span>
+        <span className="stat">{points} points, {rebounds } rebounds</span>
       </div>
     </div>
   )
