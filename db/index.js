@@ -78,11 +78,13 @@ const seed = () => {
   ])
   .then(() => {
     return Promise.all([
-      UserBracket.create({ name: 'Jeremy' })
+      UserBracket.create({ name: 'Jeremy' }),
+      UserBracket.create({ name: 'Carolyn' })
     ])
   })
   .then(() => {
     return Promise.all([
+      // BracketGame.create({ winningTeam: 5, losingTeam: 12, userId: 2 }),
       BracketGame.create({ winningTeam: 5, losingTeam: 12, userId: 1 }),
       BracketGame.create({ winningTeam: 11, losingTeam: 3, userId: 1 }),
       BracketGame.create({ winningTeam: 5, losingTeam: 4, userId: 1 }),
@@ -93,6 +95,11 @@ const seed = () => {
       BracketGame.create({ winningTeam: 51, losingTeam: 64, userId: 1 }),
       BracketGame.create({ winningTeam: 35, losingTeam: 62, userId: 1 }),
       BracketGame.create({ winningTeam: 45, losingTeam: 36, userId: 1 }),
+      BracketGame.create({ winningTeam: 51, losingTeam: 13, userId: 2 }),
+      BracketGame.create({ winningTeam: 15, losingTeam: 62, userId: 2 }),
+      BracketGame.create({ winningTeam: 33, losingTeam: 46, userId: 2 }),
+      BracketGame.create({ winningTeam: 25, losingTeam: 26, userId: 2 }),
+      BracketGame.create({ winningTeam: 4, losingTeam: 6, userId: 2 }),
     ])
   })
 }
