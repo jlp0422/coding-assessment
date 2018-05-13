@@ -16,13 +16,13 @@ const gameStates = [
 ]
 
 const allGamesAndStates = games.reduce((memo, game) => {
-  // used an object since it would be easier to look up a specific game id
-  // also if game already existed, wouldn't add it again
+  // used an array so that I could then reduce, filter, etc
   const singleGameState = gameStates.find(gState => gState.id === game.id)
-  if (!memo[game.id]) memo[game.id] = { game, singleGameState }
+  memo.push(game, singleGameState)
   return memo
-}, {})
+}, [])
 
+// re-usable function to convert query date into non-string
 const convertDate = (dateStr) => {
   const dateMonth = dateStr.slice(0, 2)
   const dateDay = dateStr.slice(2, 4)
@@ -35,16 +35,17 @@ const getGames = () => {
 }
 
 const getGame = (id) => {
-  return allGamesAndStates[id]
+  return allGamesAndStates.filter(game => game.game_id === id || game.id === id)
 }
 
 const getGamesByDate = (date) => {
   const gameDate = convertDate(date)
   const gamesForDate = games.filter(game => new Date(game.date).getTime() === gameDate.getTime())
   return gamesForDate.reduce((memo, game) => {
-    memo[game.id] = getGame(game.id)
+    const singleGameState = gameStates.find(gState => gState.id === game.id)
+    memo.push( game, singleGameState )
     return memo
-  }, {})
+  }, [])
 }
 
 module.exports = {

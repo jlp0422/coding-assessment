@@ -1,3 +1,4 @@
+/* eslint-disable */
 const teams = [
   { id: 1, name: 'Lakers', city: 'Los Angeles', full_name: 'Los Angeles Lakers', abbrev: 'LAL' },
   { id: 2, name: 'Cavaliers', city: 'Cleveland', full_name: 'Cleveland Cavaliers', abbrev: 'CLE' },

@@ -61,6 +61,7 @@ const getPlayerStats = (id) => {
 const getPlayersForDate = (date) => {
   const gamesForDate = games.getGamesByDate(date)
   const gameIdArray = Object.keys(gamesForDate)
+  // finding the player stats for the specified date
   const playerStatsForDate = gameIdArray.reduce((memo, gameId) => {
     const statsForGame = playersStats.filter(stat => stat.game_id === gameId * 1)
     memo = memo.concat(statsForGame)
@@ -68,9 +69,12 @@ const getPlayersForDate = (date) => {
   }, [])
   return playerStatsForDate.reduce((memo, playerStat) => {
     const player = players.find(player => player.id === playerStat.player_id)
-    if (!memo[player.id]) memo[player.id] = player
+    // if player already exists, don't add again
+    if (memo.includes(player)) return memo
+    // not sure if i needed to include both player and player stat line
+    memo.push(player)//, playerStat)
     return memo
-  }, {})
+  }, [])
 }
 
 
