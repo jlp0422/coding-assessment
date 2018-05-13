@@ -63,23 +63,21 @@ BracketGame.pathToVictory = function(id) {
     })
     .then( losingTeams => {
       return School.findAll({
-        include: [ {
-          model: BracketGame, as: 'losingTeam'
-        } ],
         where: {
-          id: { $or: [
+          id: {
+            $or: [
               losingTeams[0],
               losingTeams[1],
               losingTeams[2],
               losingTeams[3],
               losingTeams[4],
               losingTeams[5],
-            ] },
-          }
+            ]
+          },
+        }
       })
     })
     .then( teams => {
-      // return teams
       return `Your champion's path to victory was: ${teams[0].name} --> ${teams[1].name} --> ${teams[2].name} --> ${teams[3].name} --> ${teams[4].name} --> ${teams[5].name}`
     })
 }

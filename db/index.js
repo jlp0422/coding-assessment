@@ -84,7 +84,6 @@ const seed = () => {
   })
   .then(() => {
     return Promise.all([
-      // BracketGame.create({ winningTeam: 5, losingTeam: 12, userId: 2 }),
       BracketGame.create({ winningTeam: 5, losingTeam: 12, userId: 1 }),
       BracketGame.create({ winningTeam: 11, losingTeam: 3, userId: 1 }),
       BracketGame.create({ winningTeam: 5, losingTeam: 4, userId: 1 }),
