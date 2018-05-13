@@ -21774,6 +21774,130 @@ var Stats = function Stats() {
       "div",
       { className: "app__section__title" },
       "Stats"
+    ),
+    _react2.default.createElement(
+      "div",
+      null,
+      _react2.default.createElement(
+        "div",
+        { className: "team__name" },
+        _react2.default.createElement(
+          "p",
+          null,
+          "Oklahoma City"
+        )
+      ),
+      _react2.default.createElement(
+        "div",
+        { className: "app__play-by-play__indiv play" },
+        _react2.default.createElement("img", { src: "../vendor/assets/kevin_durant.png", className: "play__headshot" }),
+        _react2.default.createElement(
+          "div",
+          { className: "play__desc" },
+          _react2.default.createElement(
+            "p",
+            null,
+            "Kevin Durant"
+          ),
+          _react2.default.createElement(
+            "p",
+            null,
+            "26 points, 5 rebounds"
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: "play__score" },
+          "44.5 FPTS"
+        )
+      ),
+      _react2.default.createElement(
+        "div",
+        { className: "app__play-by-play__indiv play" },
+        _react2.default.createElement("img", { src: "../vendor/assets/kevin_durant.png", className: "play__headshot" }),
+        _react2.default.createElement(
+          "div",
+          { className: "play__desc" },
+          _react2.default.createElement(
+            "p",
+            null,
+            "Russell Westbrook"
+          ),
+          _react2.default.createElement(
+            "p",
+            null,
+            "16 points, 19 assists"
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: "play__score" },
+          "69.5 FPTS"
+        )
+      ),
+      _react2.default.createElement("div", { className: "app__play-by-play__indiv play" })
+    ),
+    _react2.default.createElement(
+      "div",
+      null,
+      _react2.default.createElement(
+        "div",
+        { className: "team__name" },
+        _react2.default.createElement(
+          "p",
+          null,
+          "Golden State"
+        )
+      ),
+      _react2.default.createElement(
+        "div",
+        { className: "app__play-by-play__indiv play" },
+        _react2.default.createElement("img", { src: "../vendor/assets/steph_curry.png", className: "play__headshot" }),
+        _react2.default.createElement(
+          "div",
+          { className: "play__desc" },
+          _react2.default.createElement(
+            "p",
+            null,
+            "Steph Curry"
+          ),
+          _react2.default.createElement(
+            "p",
+            null,
+            "36 points, 5 rebounds"
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: "play__score" },
+          "65.5 FPTS"
+        )
+      ),
+      _react2.default.createElement(
+        "div",
+        { className: "app__play-by-play__indiv play" },
+        _react2.default.createElement("img", { src: "../vendor/assets/klay_thompson.png", className: "play__headshot" }),
+        _react2.default.createElement(
+          "div",
+          { className: "play__desc" },
+          _react2.default.createElement(
+            "p",
+            null,
+            "Klay Thompson"
+          ),
+          _react2.default.createElement(
+            "p",
+            null,
+            "16 points, 2 assists"
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: "play__score" },
+          "28.8 FPTS"
+        )
+      ),
+      _react2.default.createElement("div", { className: "app__play-by-play__indiv play" })
     )
   );
 };
@@ -21808,6 +21932,82 @@ var YourScoring = function YourScoring() {
         "div",
         { className: "app__section__title" },
         "Your Scoring"
+      ),
+      _react2.default.createElement(
+        "div",
+        null,
+        _react2.default.createElement(
+          "div",
+          { className: "app__play-by-play__indiv play" },
+          _react2.default.createElement("img", { src: "../vendor/assets/kevin_durant.png", className: "play__headshot" }),
+          _react2.default.createElement(
+            "div",
+            { className: "play__desc" },
+            _react2.default.createElement(
+              "p",
+              null,
+              "Kevin Durant"
+            ),
+            _react2.default.createElement(
+              "p",
+              null,
+              "26 points, 5 rebounds"
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "play__score" },
+            "44.5 FPTS"
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: "app__play-by-play__indiv play" },
+          _react2.default.createElement("img", { src: "../vendor/assets/steph_curry.png", className: "play__headshot" }),
+          _react2.default.createElement(
+            "div",
+            { className: "play__desc" },
+            _react2.default.createElement(
+              "p",
+              null,
+              "Steph Curry"
+            ),
+            _react2.default.createElement(
+              "p",
+              null,
+              "36 points, 5 assists"
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "play__score" },
+            "65.5 FPTS"
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: "app__play-by-play__indiv play" },
+          _react2.default.createElement("img", { src: "../vendor/assets/klay_thompson.png", className: "play__headshot" }),
+          _react2.default.createElement(
+            "div",
+            { className: "play__desc" },
+            _react2.default.createElement(
+              "p",
+              null,
+              "Klay Thompson"
+            ),
+            _react2.default.createElement(
+              "p",
+              null,
+              "16 points, 2 assists"
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "play__score" },
+            "28.8 FPTS"
+          )
+        )
       )
     )
   );
