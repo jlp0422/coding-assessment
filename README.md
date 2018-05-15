@@ -19,6 +19,7 @@
 ---
 ### 3) Data Modeling
 #### Necessary Files
+* `data-model-answer.md`
 * `fanduel-coding-assessment-Q3.csv`
   * Attached via email
 * Data Model Chart
