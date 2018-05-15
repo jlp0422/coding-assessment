@@ -5,11 +5,13 @@ module.exports = app
 app.get('/teams', (req, res, next) => {
   School.findAll()
     .then(schools => res.send(schools))
+    .catch(next)
 })
 
 app.get('/:id', (req, res, next) => {
   BracketGame.findAll({ where: { userId: req.params.id } })
     .then(bracket => res.send(bracket))
+    .catch(next)
 })
 
 app.get('/:id/status', (req, res, next) => {
