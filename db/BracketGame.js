@@ -5,7 +5,8 @@ const { School } = require('./School')
 const BracketGame = conn.define('bracket_game', {
   winningTeam: Sequelize.INTEGER,
   losingTeam: Sequelize.INTEGER,
-  userId: Sequelize.INTEGER
+  userId: Sequelize.INTEGER,
+  round: Sequelize.INTEGER
 }, {
     timestamps: false
   }
@@ -58,42 +59,43 @@ BracketGame.pathToVictory = function(id) {
     .then( games => {
       // creating array of losing team ids
       return games.reduce((memo, game) => {
-        memo.push(game.losingTeam)
+        memo.push({ losingTeamId: game.losingTeam, round: game.round })
         return memo
       }, [])
     })
     .then( losingTeams => {
+      // return losingTeams
       // finding all teams that were in the losing team array
       return School.findAll({
         where: {
           id: {
             $or: [
-              losingTeams[0],
-              losingTeams[1],
-              losingTeams[2],
-              losingTeams[3],
-              losingTeams[4],
-              losingTeams[5],
+              losingTeams[0].losingTeamId,
+              losingTeams[1].losingTeamId,
+              losingTeams[2].losingTeamId,
+              losingTeams[3].losingTeamId,
+              losingTeams[4].losingTeamId,
+              losingTeams[5].losingTeamId,
             ]
           },
         },
-        // trying to put them in order of the bracket game id, which would signify round
-        include: [
-          {
-            model: BracketGame,
-            as: 'losingTeam',
-            order: [[ 'id', 'ASC']]
-          }
-        ]
+        include: [ {
+          model: BracketGame,
+          as: 'losingTeam'
+        } ]
       })
     })
     .then( teams => {
-      // return teams
-      // these probably won't be in order 100% of the time
-      // having hard time ensuring they are in order
-      // would likely need to add another column to the game model, with 'round'
-      // or would need to find the number of wins for each of the losing teams, and then order by how many wins they had (0 wins = 1st round loss, 5 wins = nat'l champ game loss)
-      return `Your champion's path to victory was: ${teams[0].name} --> ${teams[1].name} --> ${teams[2].name} --> ${teams[3].name} --> ${teams[4].name} --> ${teams[5].name}`
+      const round1 = teams.find(team => team.losingTeam[0].round === 1)
+      const round2 = teams.find(team => team.losingTeam[0].round === 2)
+      const round3 = teams.find(team => team.losingTeam[0].round === 3)
+      const round4 = teams.find(team => team.losingTeam[0].round === 4)
+      const round5 = teams.find(team => team.losingTeam[0].round === 5)
+      const round6 = teams.find(team => team.losingTeam[0].round === 6)
+      return [ round1, round2, round3, round4, round5, round6 ]
+    })
+    .then( orderTeams => {
+      return `Your champion's path to victory was: ${orderTeams[0].name} --> ${orderTeams[1].name} --> ${orderTeams[2].name} --> ${orderTeams[3].name} --> ${orderTeams[4].name} --> ${orderTeams[5].name}`
     })
 }
 

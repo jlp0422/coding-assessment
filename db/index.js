@@ -19,21 +19,21 @@ const seed = () => {
   })
   .then(() => {
     return Promise.all([
-      BracketGame.create({ winningTeam: 5, losingTeam: 12, userId: 1 }),
-      BracketGame.create({ winningTeam: 11, losingTeam: 3, userId: 1 }),
-      BracketGame.create({ winningTeam: 5, losingTeam: 4, userId: 1 }),
-      BracketGame.create({ winningTeam: 5, losingTeam: 44, userId: 1 }),
-      BracketGame.create({ winningTeam: 5, losingTeam: 34, userId: 1 }),
-      BracketGame.create({ winningTeam: 5, losingTeam: 1, userId: 1 }),
-      BracketGame.create({ winningTeam: 5, losingTeam: 60, userId: 1 }),
-      BracketGame.create({ winningTeam: 51, losingTeam: 64, userId: 1 }),
-      BracketGame.create({ winningTeam: 35, losingTeam: 62, userId: 1 }),
-      BracketGame.create({ winningTeam: 45, losingTeam: 36, userId: 1 }),
-      BracketGame.create({ winningTeam: 51, losingTeam: 13, userId: 2 }),
-      BracketGame.create({ winningTeam: 15, losingTeam: 62, userId: 2 }),
-      BracketGame.create({ winningTeam: 33, losingTeam: 46, userId: 2 }),
-      BracketGame.create({ winningTeam: 25, losingTeam: 26, userId: 2 }),
-      BracketGame.create({ winningTeam: 4, losingTeam: 6, userId: 2 }),
+      BracketGame.create({ winningTeam: 5, losingTeam: 12, userId: 1, round: 1 }),
+      BracketGame.create({ winningTeam: 5, losingTeam: 4, userId: 1, round: 2 }),
+      BracketGame.create({ winningTeam: 5, losingTeam: 44, userId: 1, round: 3 }),
+      BracketGame.create({ winningTeam: 5, losingTeam: 34, userId: 1, round: 4 }),
+      BracketGame.create({ winningTeam: 5, losingTeam: 1, userId: 1, round: 5 }),
+      BracketGame.create({ winningTeam: 5, losingTeam: 60, userId: 1, round: 6 }),
+      BracketGame.create({ winningTeam: 51, losingTeam: 64, userId: 1, round: 1 }),
+      BracketGame.create({ winningTeam: 11, losingTeam: 3, userId: 1, round: 1 }),
+      BracketGame.create({ winningTeam: 35, losingTeam: 62, userId: 1, round: 1 }),
+      BracketGame.create({ winningTeam: 45, losingTeam: 36, userId: 1, round: 1 }),
+      BracketGame.create({ winningTeam: 51, losingTeam: 13, userId: 2, round: 1 }),
+      BracketGame.create({ winningTeam: 15, losingTeam: 62, userId: 2, round: 1 }),
+      BracketGame.create({ winningTeam: 33, losingTeam: 46, userId: 2, round: 1 }),
+      BracketGame.create({ winningTeam: 25, losingTeam: 26, userId: 2, round: 1 }),
+      BracketGame.create({ winningTeam: 4, losingTeam: 6, userId: 2, round: 1}),
     ])
   })
 }
