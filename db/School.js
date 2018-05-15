@@ -10,6 +10,7 @@ const School = conn.define('school', {
   }
 )
 
+// 2018 ncaa tournament field!
 const createAllSchools = () => {
   return Promise.all([
     School.create({ name: 'Virginia', seed: 1, region: 'South' }),

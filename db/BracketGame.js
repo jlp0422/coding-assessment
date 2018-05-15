@@ -72,18 +72,14 @@ BracketGame.pathToVictory = function(id) {
       // return losingTeams
       // finding all teams that were in the losing team array
       return School.findAll({
-        where: {
-          id: {
-            $or: [
+        where: { id: { $or: [
               losingTeams[0].losingTeamId,
               losingTeams[1].losingTeamId,
               losingTeams[2].losingTeamId,
               losingTeams[3].losingTeamId,
               losingTeams[4].losingTeamId,
               losingTeams[5].losingTeamId,
-            ]
-          },
-        },
+            ] } },
         include: [ {
           model: BracketGame,
           as: 'losingTeam'

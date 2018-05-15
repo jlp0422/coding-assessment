@@ -72,7 +72,7 @@ const getPlayersForDate = (date) => {
     // if player already exists, don't add again
     if (memo.includes(player)) return memo
     // not sure if i needed to include both player and player stat line
-    memo.push(player)//, playerStat)
+    memo.push(player, playerStat)
     return memo
   }, [])
 }
