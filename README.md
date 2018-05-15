@@ -20,6 +20,8 @@
 #### Necessary Files
 * `data-model.csv`
   * Attached via email
+* Data Model Chart
+  * [https://www.draw.io/#G1hd1oJIk4j1JPODD7Alvpsr9KulTggTRk]
 ---
 ### 4) March Madness Bracket
 #### Necessary Files
@@ -31,5 +33,5 @@
   * `index.js`
   * `School.js`
   * `UserBracket.js`
-* Database is created using `postgres`
+* Database is created using `postgres` and `sequelize`
   * Database name: `fanduel_challenge_db`

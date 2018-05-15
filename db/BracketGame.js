@@ -26,6 +26,7 @@ BracketGame.findChampion = function(id) {
     attributes: ['winningTeam', [Sequelize.fn('count', Sequelize.col('winningTeam')), 'wins']],
     where: { userId: id },
     group: [ 'winningTeam', 'id' ]
+    // was playing around with group: [ 'winningTeam' ], but couldn't get that to work the way i wanted it
   })
   .then( winningTeams => {
     // summing up wins per team into an object
@@ -53,7 +54,7 @@ BracketGame.pathToVictory = function(id) {
       // finding all games where champion won, in order of game id
       where: { winningTeam: champion.id },
       order: [[ 'id', 'ASC' ]]
-    }))
+      }))
     .then( games => {
       // creating array of losing team ids
       return games.reduce((memo, game) => {
@@ -62,6 +63,7 @@ BracketGame.pathToVictory = function(id) {
       }, [])
     })
     .then( losingTeams => {
+      // finding all teams that were in the losing team array
       return School.findAll({
         where: {
           id: {
@@ -74,10 +76,23 @@ BracketGame.pathToVictory = function(id) {
               losingTeams[5],
             ]
           },
-        }
+        },
+        // trying to put them in order of the bracket game id, which would signify round
+        include: [
+          {
+            model: BracketGame,
+            as: 'losingTeam',
+            order: [[ 'id', 'ASC']]
+          }
+        ]
       })
     })
     .then( teams => {
+      // return teams
+      // these probably won't be in order 100% of the time
+      // having hard time ensuring they are in order
+      // would likely need to add another column to the game model, with 'round'
+      // or would need to find the number of wins for each of the losing teams, and then order by how many wins they had (0 wins = 1st round loss, 5 wins = nat'l champ game loss)
       return `Your champion's path to victory was: ${teams[0].name} --> ${teams[1].name} --> ${teams[2].name} --> ${teams[3].name} --> ${teams[4].name} --> ${teams[5].name}`
     })
 }
