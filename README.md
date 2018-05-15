@@ -1,5 +1,6 @@
 ## FanDuel Coding Assessment
-
+### Please let me know if you have any questions!
+---
 ### 1) Routes
 #### Necessary Files
 * `server.js`
@@ -35,5 +36,3 @@
   * `UserBracket.js`
 * Database is created using `postgres` and `sequelize`
   * Database name: `fanduel_challenge_db`
----
-#### Please let me know if you have any questions!

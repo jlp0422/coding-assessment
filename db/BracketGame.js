@@ -91,6 +91,7 @@ BracketGame.pathToVictory = function(id) {
       })
     })
     .then( teams => {
+      // putting teams in order of when they lost
       const round1 = teams.find(team => team.losingTeam[0].round === 1)
       const round2 = teams.find(team => team.losingTeam[0].round === 2)
       const round3 = teams.find(team => team.losingTeam[0].round === 3)
