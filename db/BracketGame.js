@@ -21,6 +21,7 @@ BracketGame.isBracketComplete = function(id) {
   })
 }
 
+
 BracketGame.findChampion = function(id) {
   return this.findAll({
     // getting all teams who won at least 1 game
@@ -41,21 +42,25 @@ BracketGame.findChampion = function(id) {
     for (let key in winsPerTeam) {
       // finding team that had 6 wins (must have 6 to win tournament)
       if (winsPerTeam[key] === 6) return key
-      else return null
     }
   })
   // returning school that had 6 wins
   .then(winningTeamId => School.findById(winningTeamId))
 }
 
+
 BracketGame.pathToVictory = function(id) {
+  let champ
   // using findChampion to get the winning team, then finding losing teams
   return this.findChampion(id)
-    .then( champion => this.findAll({
+    .then( champion => {
+      champ = champion
+      return this.findAll({
       // finding all games where champion won, in order of game id
       where: { winningTeam: champion.id },
       order: [[ 'id', 'ASC' ]]
-      }))
+      })
+    })
     .then( games => {
       // creating array of losing team ids
       return games.reduce((memo, game) => {
@@ -95,7 +100,7 @@ BracketGame.pathToVictory = function(id) {
       return [ round1, round2, round3, round4, round5, round6 ]
     })
     .then( orderTeams => {
-      return `Your champion's path to victory was: ${orderTeams[0].name} --> ${orderTeams[1].name} --> ${orderTeams[2].name} --> ${orderTeams[3].name} --> ${orderTeams[4].name} --> ${orderTeams[5].name}`
+      return `Your champion's path to victory was: ${orderTeams[0].name} --> ${orderTeams[1].name} --> ${orderTeams[2].name} --> ${orderTeams[3].name} --> ${orderTeams[4].name} --> ${orderTeams[5].name}. Congrats ${champ.name}!`
     })
 }
 

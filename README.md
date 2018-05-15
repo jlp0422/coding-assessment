@@ -6,7 +6,7 @@
 * `routes` directory
   * All files except `bracket.js`
 * `db` directory
-  * `games`, `players`, `teams`
+  * `games.js`, `players.js`, `teams.js`
 ---
 ### 2) React
 #### Necessary Files
@@ -18,7 +18,7 @@
 ---
 ### 3) Data Modeling
 #### Necessary Files
-* `data-model.csv`
+* `fanduel-coding-assessment-Q3.csv`
   * Attached via email
 * Data Model Chart
   * [https://www.draw.io/#G1hd1oJIk4j1JPODD7Alvpsr9KulTggTRk]
@@ -28,10 +28,12 @@
 * `server.js`
 * `/routes/bracket.js`
 * `db` directory
-  * `BracketGames.js`
+  * `BracketGame.js`
   * `conn.js`
   * `index.js`
   * `School.js`
   * `UserBracket.js`
 * Database is created using `postgres` and `sequelize`
   * Database name: `fanduel_challenge_db`
+---
+#### Please let me know if you have any questions!
