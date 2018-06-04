@@ -1,6 +1,12 @@
 ## FanDuel Coding Assessment
 ### Please let me know if you have any questions!
 ---
+### To Start:
+* Clone the repository
+* `npm install`
+* `npm run start:dev`
+* Site will be running at localhost:3000
+---
 ### 1) Routes
 #### Necessary Files
 * `server.js`

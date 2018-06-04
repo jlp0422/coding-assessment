@@ -19,36 +19,30 @@ class Nav extends React.Component {
   render() {
     const { nav } = this.state
     return (
-      <_Nav {...this.props} nav={ nav } />
+      <header className="app__header">
+
+        <ul className="app__header__main-nav">
+          <li className="logo">
+
+          </li>
+          {
+            nav.map(link => (
+              <a style={{ textDecoration: 'none', color: '#ffffff' }} key={link.title} href={`${link.href}`}>
+                <li>{link.title}</li>
+              </a>
+            ))
+          }
+          <li>
+            Friends
+			</li>
+        </ul>
+
+        <div className="app__header__account">
+
+        </div>
+      </header>
     )
   }
-}
-
-const _Nav = ({ nav }) => {
-  return (
-  <header className="app__header">
-
-    <ul className="app__header__main-nav">
-      <li className="logo">
-
-      </li>
-      {
-        nav.map(link => (
-          <a style={{ textDecoration: 'none', color: '#ffffff'}} key={link.title} href={`${link.href}`}>
-            <li>{link.title}</li>
-          </a>
-        ))
-      }
-      <li>
-        Friends
-			</li>
-    </ul>
-
-    <div className="app__header__account">
-
-    </div>
-  </header>
-  )
 }
 
 export default Nav

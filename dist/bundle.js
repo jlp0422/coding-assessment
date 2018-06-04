@@ -20448,8 +20448,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(0);
@@ -20499,43 +20497,37 @@ var Nav = function (_React$Component) {
     value: function render() {
       var nav = this.state.nav;
 
-      return _react2.default.createElement(_Nav, _extends({}, this.props, { nav: nav }));
+      return _react2.default.createElement(
+        'header',
+        { className: 'app__header' },
+        _react2.default.createElement(
+          'ul',
+          { className: 'app__header__main-nav' },
+          _react2.default.createElement('li', { className: 'logo' }),
+          nav.map(function (link) {
+            return _react2.default.createElement(
+              'a',
+              { style: { textDecoration: 'none', color: '#ffffff' }, key: link.title, href: '' + link.href },
+              _react2.default.createElement(
+                'li',
+                null,
+                link.title
+              )
+            );
+          }),
+          _react2.default.createElement(
+            'li',
+            null,
+            'Friends'
+          )
+        ),
+        _react2.default.createElement('div', { className: 'app__header__account' })
+      );
     }
   }]);
 
   return Nav;
 }(_react2.default.Component);
-
-var _Nav = function _Nav(_ref) {
-  var nav = _ref.nav;
-
-  return _react2.default.createElement(
-    'header',
-    { className: 'app__header' },
-    _react2.default.createElement(
-      'ul',
-      { className: 'app__header__main-nav' },
-      _react2.default.createElement('li', { className: 'logo' }),
-      nav.map(function (link) {
-        return _react2.default.createElement(
-          'a',
-          { style: { textDecoration: 'none', color: '#ffffff' }, key: link.title, href: '' + link.href },
-          _react2.default.createElement(
-            'li',
-            null,
-            link.title
-          )
-        );
-      }),
-      _react2.default.createElement(
-        'li',
-        null,
-        'Friends'
-      )
-    ),
-    _react2.default.createElement('div', { className: 'app__header__account' })
-  );
-};
 
 exports.default = Nav;
 
@@ -21432,8 +21424,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(0);
@@ -21482,144 +21472,138 @@ var Scoreboard = function (_React$Component) {
     key: 'render',
     value: function render() {
       var game_stats = this.state.game_stats;
+      var away_team = game_stats.away_team,
+          home_team = game_stats.home_team,
+          arena = game_stats.arena,
+          location = game_stats.location,
+          quarter = game_stats.quarter,
+          time_left = game_stats.time_left;
 
-      return _react2.default.createElement(_Scoreboard, _extends({}, this.props, { stats: game_stats }));
+      if (!game_stats.arena) return null;
+      return _react2.default.createElement(
+        'section',
+        { className: 'app__game-chart app__section' },
+        _react2.default.createElement(
+          'div',
+          { className: 'app__game-chart__score score' },
+          _react2.default.createElement(
+            'div',
+            { className: 'score__team away-team' },
+            _react2.default.createElement(
+              'div',
+              { className: 'score__team__name' },
+              away_team.location,
+              _react2.default.createElement(
+                'span',
+                { className: 'mascot' },
+                away_team.name
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'score__team__score' },
+              away_team.score
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'score__game-info' },
+            _react2.default.createElement(
+              'span',
+              { className: 'score__game-info__game-time' },
+              time_left,
+              ' ',
+              quarter,
+              quarter === 1 ? 'st' : quarter === 2 ? 'nd' : quarter === 3 ? 'rd' : 'th'
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'score__game-info__venue' },
+              arena,
+              _react2.default.createElement('br', null),
+              location
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'score__team home-team' },
+            _react2.default.createElement(
+              'div',
+              { className: 'score__team__score' },
+              home_team.score
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'score__team__name' },
+              home_team.location,
+              _react2.default.createElement(
+                'span',
+                { className: 'mascot' },
+                home_team.name
+              )
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'score__last-play' },
+          'last play: tv timeout. go get a snack.'
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'score__shot-chart' },
+          _react2.default.createElement(
+            'div',
+            { className: 'score__shot-chart__team away-team' },
+            away_team.shooting_stats.map(function (stat) {
+              return _react2.default.createElement(
+                'div',
+                { key: stat.title, className: 'stat' },
+                _react2.default.createElement(
+                  'span',
+                  { className: 'stat__title' },
+                  stat.title
+                ),
+                _react2.default.createElement(
+                  'span',
+                  { className: 'stat__int' },
+                  stat.perc
+                )
+              );
+            })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'score__shot-chart__image' },
+            _react2.default.createElement('img', { src: '../vendor/assets/shot_chart.png' })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'score__shot-chart__team home-team' },
+            home_team.shooting_stats.map(function (stat) {
+              return _react2.default.createElement(
+                'div',
+                { key: stat.title, className: 'stat' },
+                _react2.default.createElement(
+                  'span',
+                  { className: 'stat__title' },
+                  stat.title
+                ),
+                _react2.default.createElement(
+                  'span',
+                  { className: 'stat__int' },
+                  stat.perc
+                )
+              );
+            })
+          )
+        )
+      );
     }
   }]);
 
   return Scoreboard;
 }(_react2.default.Component);
-
-var _Scoreboard = function _Scoreboard(_ref) {
-  var stats = _ref.stats;
-  var away_team = stats.away_team,
-      home_team = stats.home_team,
-      arena = stats.arena,
-      location = stats.location,
-      quarter = stats.quarter,
-      time_left = stats.time_left;
-
-  if (!stats.arena) return null;
-  return _react2.default.createElement(
-    'section',
-    { className: 'app__game-chart app__section' },
-    _react2.default.createElement(
-      'div',
-      { className: 'app__game-chart__score score' },
-      _react2.default.createElement(
-        'div',
-        { className: 'score__team away-team' },
-        _react2.default.createElement(
-          'div',
-          { className: 'score__team__name' },
-          away_team.location,
-          _react2.default.createElement(
-            'span',
-            { className: 'mascot' },
-            away_team.name
-          )
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'score__team__score' },
-          away_team.score
-        )
-      ),
-      _react2.default.createElement(
-        'div',
-        { className: 'score__game-info' },
-        _react2.default.createElement(
-          'span',
-          { className: 'score__game-info__game-time' },
-          time_left,
-          ' ',
-          quarter,
-          quarter === 1 ? 'st' : quarter === 2 ? 'nd' : quarter === 3 ? 'rd' : 'th'
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'score__game-info__venue' },
-          arena,
-          _react2.default.createElement('br', null),
-          location
-        )
-      ),
-      _react2.default.createElement(
-        'div',
-        { className: 'score__team home-team' },
-        _react2.default.createElement(
-          'div',
-          { className: 'score__team__score' },
-          home_team.score
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'score__team__name' },
-          home_team.location,
-          _react2.default.createElement(
-            'span',
-            { className: 'mascot' },
-            home_team.name
-          )
-        )
-      )
-    ),
-    _react2.default.createElement(
-      'div',
-      { className: 'score__last-play' },
-      'last play: tv timeout. go get a snack.'
-    ),
-    _react2.default.createElement(
-      'div',
-      { className: 'score__shot-chart' },
-      _react2.default.createElement(
-        'div',
-        { className: 'score__shot-chart__team away-team' },
-        away_team.shooting_stats.map(function (stat) {
-          return _react2.default.createElement(
-            'div',
-            { key: stat.title, className: 'stat' },
-            _react2.default.createElement(
-              'span',
-              { className: 'stat__title' },
-              stat.title
-            ),
-            _react2.default.createElement(
-              'span',
-              { className: 'stat__int' },
-              stat.perc
-            )
-          );
-        })
-      ),
-      _react2.default.createElement(
-        'div',
-        { className: 'score__shot-chart__image' },
-        _react2.default.createElement('img', { src: '../vendor/assets/shot_chart.png' })
-      ),
-      _react2.default.createElement(
-        'div',
-        { className: 'score__shot-chart__team home-team' },
-        home_team.shooting_stats.map(function (stat) {
-          return _react2.default.createElement(
-            'div',
-            { key: stat.title, className: 'stat' },
-            _react2.default.createElement(
-              'span',
-              { className: 'stat__title' },
-              stat.title
-            ),
-            _react2.default.createElement(
-              'span',
-              { className: 'stat__int' },
-              stat.perc
-            )
-          );
-        })
-      )
-    )
-  );
-};
 
 exports.default = Scoreboard;
 
@@ -21633,8 +21617,6 @@ exports.default = Scoreboard;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -21691,61 +21673,53 @@ var PlayByPlay = function (_React$Component) {
           homeTeam = _state.homeTeam,
           awayTeam = _state.awayTeam;
 
-      return _react2.default.createElement(_PlayByPlay, _extends({}, this.props, { plays: plays, homeTeam: homeTeam, awayTeam: awayTeam }));
+      return _react2.default.createElement(
+        'section',
+        { className: 'app__play-by-play app__section split-flex' },
+        _react2.default.createElement(
+          'div',
+          { className: 'app__section__title' },
+          'Play By Play'
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          plays.map(function (play) {
+            return _react2.default.createElement(
+              'div',
+              { key: play.id, className: 'app__play-by-play__indiv play' },
+              _react2.default.createElement('img', { src: '../vendor/assets/' + play.scoring_player + '.png', className: 'play__headshot' }),
+              _react2.default.createElement(
+                'div',
+                { className: 'play__desc' },
+                _react2.default.createElement(
+                  'span',
+                  null,
+                  play.time_left,
+                  ' ',
+                  play.quarter,
+                  'th'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  play.description
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'play__score' },
+                play.home_score > play.away_score ? play.home_score + '-' + play.away_score + ', ' + homeTeam.abbrev : play.away_score + '-' + play.home_score + ', ' + awayTeam.abbrev
+              )
+            );
+          })
+        )
+      );
     }
   }]);
 
   return PlayByPlay;
 }(_react2.default.Component);
-
-var _PlayByPlay = function _PlayByPlay(_ref) {
-  var plays = _ref.plays,
-      homeTeam = _ref.homeTeam,
-      awayTeam = _ref.awayTeam;
-
-  return _react2.default.createElement(
-    'section',
-    { className: 'app__play-by-play app__section split-flex' },
-    _react2.default.createElement(
-      'div',
-      { className: 'app__section__title' },
-      'Play By Play'
-    ),
-    _react2.default.createElement(
-      'div',
-      null,
-      plays.map(function (play) {
-        return _react2.default.createElement(
-          'div',
-          { key: play.id, className: 'app__play-by-play__indiv play' },
-          _react2.default.createElement('img', { src: '../vendor/assets/' + play.scoring_player + '.png', className: 'play__headshot' }),
-          _react2.default.createElement(
-            'div',
-            { className: 'play__desc' },
-            _react2.default.createElement(
-              'span',
-              null,
-              play.time_left,
-              ' ',
-              play.quarter,
-              'th'
-            ),
-            _react2.default.createElement(
-              'p',
-              null,
-              play.description
-            )
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: 'play__score' },
-            play.home_score > play.away_score ? play.home_score + '-' + play.away_score + ', ' + homeTeam.abbrev : play.away_score + '-' + play.home_score + ', ' + awayTeam.abbrev
-          )
-        );
-      })
-    )
-  );
-};
 
 exports.default = PlayByPlay;
 
