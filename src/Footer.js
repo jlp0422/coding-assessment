@@ -3,37 +3,37 @@ import React from 'react';
 import GameBox from './GameBox';
 import GameBoxSelected from './GameBoxSelected';
 import { connect } from 'react-redux';
+import { selectFooterGame } from './store'
 
 class Footer extends React.Component {
   constructor() {
     super()
     this.state = {
-      scores: [],
       selectedGame: {}
     }
     this.onChangeGame = this.onChangeGame.bind(this)
   }
 
   componentWillReceiveProps(nextProps) {
-    const { scores } = nextProps
-    this.setState({ scores, selectedGame: scores[0] })
+    const { scores } = nextProps.games
+    this.setState({ selectedGame: scores[0] })
   }
 
   onChangeGame(id) {
-    const { scores } = this.state
+    const { scores } = this.props.games
     const selectedGame = scores.find(game => game.game_id === id)
     this.setState({ selectedGame })
   }
 
   render() {
-    const { scores, selectedGame } = this.state
-    const {onChangeGame} = this
-    const otherGames = scores.filter(score => score.game_id !== selectedGame.game_id)
+    const { scores } = this.props.games
+    const { selectedGame } = this.state
+    const { onChangeGame } = this
+    if (!scores) return null
     return (
       <div className="footer">
         <div className="arrow">&lt;</div>
-        {
-          scores.map(game => (
+        { scores.map(game => (
             game.game_id === selectedGame.game_id ? (
               <GameBoxSelected key={game.game_id} selectedGame={selectedGame} />
             ) : (
@@ -41,8 +41,7 @@ class Footer extends React.Component {
               <GameBox game={game} />
             </div>
             )
-          ))
-        }
+          )) }
         <div className="arrow-divider" />
         <div className="arrow">&gt;</div>
       </div>
@@ -50,6 +49,12 @@ class Footer extends React.Component {
   }
 }
 
-const mapState = ({ footer }) => ({ scores: footer })
+const mapState = ({ footer }) => ({ games: footer })
 
-export default connect(mapState)(Footer)
+const mapDispatch = (dispatch) => {
+  return {
+    selectGame: (game) => dispatch(selectFooterGame(game))
+  }
+}
+
+export default connect(mapState, mapDispatch)(Footer)
