@@ -1,6 +1,8 @@
 /* eslint-disable */
 import axios from 'axios';
 
+// not using SELECT FOOTER GAME
+
 const GET_FOOTER_SCORES = 'GET_FOOTER_SCORES';
 const SELECT_FOOTER_GAME = 'SELECT_FOOTER_GAME';
 
