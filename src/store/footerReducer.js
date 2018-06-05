@@ -7,7 +7,7 @@ const GET_FOOTER_SCORES = 'GET_FOOTER_SCORES';
 const SELECT_FOOTER_GAME = 'SELECT_FOOTER_GAME';
 
 const getScores = (scores) => ({ type: GET_FOOTER_SCORES, scores })
-const selectGame = (game) => ({ type: SELECT_FOOTER_GAME, game })
+const selectGame = (id) => ({ type: SELECT_FOOTER_GAME, id })
 
 export const getFooterScores = () => {
   return (dispatch) => {
@@ -18,17 +18,18 @@ export const getFooterScores = () => {
   }
 }
 
-export const selectFooterGame = (game) => {
-  return (dispatch) => dispatch(selectGame(game))
+export const selectFooterGame = (id) => {
+  return (dispatch) => dispatch(selectGame(id))
 }
 
 const footerReducer = (state = {}, action) => {
   switch (action.type) {
     case GET_FOOTER_SCORES:
-      return Object.assign({}, state, { scores: [ ...action.scores ]})
+      return Object.assign({}, state, {scores: [...action.scores ], selectedGame: action.scores[0] })
 
     case SELECT_FOOTER_GAME:
-      return Object.assign({}, state, { selectedGame: action.game })
+      const selectedGame = state.scores.find(game => game.game_id === action.id)
+      return Object.assign({}, state, { selectedGame })
   }
   return state;
 }
