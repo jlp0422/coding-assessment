@@ -2,7 +2,6 @@
 import React from 'react';
 import GameBox from './GameBox';
 import GameBoxSelected from './GameBoxSelected';
-import axios from 'axios';
 import { connect } from 'react-redux';
 
 class Footer extends React.Component {
