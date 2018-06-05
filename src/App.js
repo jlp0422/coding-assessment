@@ -7,17 +7,21 @@ import Stats from './Stats';
 import YourScoring from './YourScoring';
 import Footer from './Footer';
 import { connect } from 'react-redux';
-import { getNavElements } from './store/navReducer';
-import { getFooterScores } from './store/footerReducer';
-import { getPlayByPlay } from './store/playByPlayReducer';
+import {
+  getNavElements,
+  getFooterScores,
+  getPlayByPlay,
+  getScoreboardStats
+} from './store'
 
 class App extends React.Component {
 
   componentDidMount() {
-    const { getNav, getScores, getPlays } = this.props
+    const { getNav, getScores, getPlays, getScoreboard } = this.props
     getNav()
     getScores()
     getPlays()
+    getScoreboard()
   }
 
   render() {
@@ -44,7 +48,8 @@ const mapDispatch = (dispatch) => {
   return {
     getNav: () => dispatch(getNavElements()),
     getScores: () => dispatch(getFooterScores()),
-    getPlays: () => dispatch(getPlayByPlay())
+    getPlays: () => dispatch(getPlayByPlay()),
+    getScoreboard: () => dispatch(getScoreboardStats())
   }
 }
 
