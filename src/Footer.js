@@ -2,7 +2,8 @@
 import React from 'react';
 import GameBox from './GameBox';
 import GameBoxSelected from './GameBoxSelected';
-import axios from 'axios'
+import axios from 'axios';
+import { connect } from 'react-redux';
 
 class Footer extends React.Component {
   constructor() {
@@ -14,10 +15,9 @@ class Footer extends React.Component {
     this.onChangeGame = this.onChangeGame.bind(this)
   }
 
-  componentDidMount() {
-    axios.get('https://my-json-server.typicode.com/fanduel/moneyball-fe-challenge-data/footer_scoreboard')
-      .then( res => res.data)
-      .then( scores => this.setState({ scores, selectedGame: scores[0] }))
+  componentWillReceiveProps(nextProps) {
+    const { scores } = nextProps
+    this.setState({ scores, selectedGame: scores[0] })
   }
 
   onChangeGame(id) {
@@ -29,32 +29,28 @@ class Footer extends React.Component {
   render() {
     const { scores, selectedGame } = this.state
     const {onChangeGame} = this
+    const otherGames = scores.filter(score => score.game_id !== selectedGame.game_id)
     return (
-      <_Footer {...this.props} scores={ scores } onChangeGame={ onChangeGame } selectedGame={ selectedGame } />
+      <div className="footer">
+        <div className="arrow">&lt;</div>
+        {
+          scores.map(game => (
+            game.game_id === selectedGame.game_id ? (
+              <GameBoxSelected key={game.game_id} selectedGame={selectedGame} />
+            ) : (
+            <div onClick={() => onChangeGame(game.game_id)} key={game.game_id} >
+              <GameBox game={game} />
+            </div>
+            )
+          ))
+        }
+        <div className="arrow-divider" />
+        <div className="arrow">&gt;</div>
+      </div>
     )
   }
 }
 
-const _Footer = ({ scores, selectedGame, onChangeGame }) => {
-  const otherGames = scores.filter(score => score.game_id !== selectedGame.game_id)
-  return (
-    <div className="footer">
-      <div className="arrow">&lt;</div>
-      {
-        scores.map(game => (
-          game.game_id === selectedGame.game_id ? (
-            <GameBoxSelected key={game.game_id} selectedGame={selectedGame} />
-          ) : (
-          <div onClick={() => onChangeGame(game.game_id)} key={game.game_id} >
-            <GameBox game={game} />
-          </div>
-          )
-        ))
-      }
-      <div className="arrow-divider" />
-      <div className="arrow">&gt;</div>
-    </div>
-  )
-}
+const mapState = ({ footer }) => ({ scores: footer })
 
-export default Footer
+export default connect(mapState)(Footer)
